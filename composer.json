@@ -1,6 +1,7 @@
 {
   "name": "ecce-media/ecce-lima-twig",
   "type": "library",
+  "version": "1.0.0",
   "description": "Twig starter pack for Lima framework by Ecce",
   "keywords": [
     "ecce.",
