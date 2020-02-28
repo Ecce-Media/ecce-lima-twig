@@ -20,5 +20,8 @@
       "homepage": "http://liammills.co.uk/",
       "role": "Frontend Developer"
     }
-  ]
+  ],
+  "require": {
+    "composer/installers": "~1.0"
+  }
 }
