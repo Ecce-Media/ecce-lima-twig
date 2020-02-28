@@ -1,0 +1,25 @@
+<div 
+	{% if containerId is defined %} id="{{ containerId }}"{% endif %}
+  class="b-form__range-container{% if containerClass is defined %} {{ containerClass }}{% endif %}"
+>
+  <input 
+    type="range" 
+    autocomplete="off"
+    class="b-form__range-input js-range-input{% if class is defined %} {{ class }}{% endif %}" 
+	  {% if id is defined %} id="{{ id }}"{% endif %}
+	  {% if value is defined %} value="{{ value }}"{% endif %}
+    {% if name is defined %} name="{{ name }}"{% endif %}
+    {% if min is defined %} min="{{ min }}"{% endif %}
+    {% if max is defined %} max="{{ max }}"{% endif %}
+    {% if step is defined %} step="{{ step }}"{% endif %}
+    {% if disabled is defined and disabled %} disabled {% endif %}
+    {% if readonly is defined and readonly %} readonly {% endif %}
+    {% if required is defined and required %} required {% endif %}
+    {% if title is defined %} title="{{ title }}"{% endif %}
+  >
+
+  <output 
+    class="b-form__range-output" 
+    {% if id is defined %} id="{{ id }}-output"{% endif %}
+    {% if name is defined %} name="{{ name }}-output"{% endif %}
+  >{{ value }}</output>

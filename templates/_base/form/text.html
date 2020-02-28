@@ -1,0 +1,21 @@
+{% set type = (type is defined ? type : 'text') %}
+
+<input
+	type="{{ type }}"
+	class="b-form__input{% if class is defined %}{{ ' ' ~ class }}{% endif %}"
+	{% if style is defined %} style="{{ style }}"{% endif %}
+	{% if id is defined %} id="{{ id }}"{% endif %}
+	{% if size is defined %} size="{{ size }}"{% endif %}
+	{% if name is defined %} name="{{ name }}"{% endif %}
+	{% if value is defined %} value="{{ value }}"{% endif %}
+  {% if min is defined %} min="{{ min }}"{% endif %}
+  {% if max is defined %} max="{{ max }}"{% endif %}
+  {% if step is defined %} step="{{ step }}"{% endif %}
+	{% if maxlength is defined and maxlength %} maxlength="{{ maxlength }}"{% endif %}
+	{% if autofocus is defined and autofocus %} autofocus{% endif %}
+	{% if autocomplete is not defined or not autocomplete %} autocomplete="off"{% endif %}
+	{% if disabled is defined and disabled %} disabled {% endif %}
+	{% if readonly is defined and readonly %} readonly {% endif %}
+	{% if required is defined and required %} required {% endif %}
+	{% if title is defined %} title="{{ title }}"{% endif %}
+	{% if placeholder is defined %} placeholder="{{ placeholder }}"{% endif %}>

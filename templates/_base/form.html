@@ -1,0 +1,18 @@
+{% set class = (class is defined and class | length) ? ' ' ~ class : '' %}
+{% set method = (method is defined and method in ['GET', 'get', 'POST', 'post']) ? method : 'POST' %}
+{% set target = (target is defined and target | length) ? target : '' %}
+{% set action = (action is defined and action | length) ? action : '' %}
+
+{% if block('formContent') is defined and block('formContent') is not empty %}
+  <form 
+    class="b-form{{ class }}" 
+    method="{{ method }}"
+    {% if target != '' %} target="{{ target }}"{% endif %}
+    {% if action != '' %} action="{{ action }}"{% endif %} 
+    {% if id is defined and id != '' %} id="{{ id }}"{% endif %}
+    accept-charset="UTF-8" 
+    novalidate
+  >
+    {{ block('formContent') }}
+  </form>
+{% endif %}

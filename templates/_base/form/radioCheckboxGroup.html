@@ -1,0 +1,42 @@
+{% set options = (options is defined ? options : []) %}
+{% set type = (type is defined and type in ['radio', 'checkbox']) ? type : 'checkbox' %}
+{% set value = (value is defined ? value : null) %}
+{% set errors = (errors is defined ? errors : null) %}
+
+<fieldset
+	{% if fieldId is defined %} id="{{ fieldId }}"{% endif %}
+	class="b-form__group{% if fieldClass is defined %} {{ fieldClass }}{% endif %}"
+	role="group"
+>
+	{% if legend is defined and legend | length > 0 %}
+		<legend class="b-form__legend{% if legendClass is defined %} {{ legendClass }}{% endif %}">{{ legendProp }}</legend>
+	{% endif %}
+
+	{% if options is iterable %}
+		{% for key, option in options %}
+			{% include "_base/form/radioCheckbox" with {
+				containerId: option.containerId is defined ? option.containerId : null,
+				containerClass: option.containerClass is defined ? option.containerClass : null,
+				type: type,
+				value: (option.value is defined ? option.value : key),
+				class: option.class is defined ? option.class : null,
+				id: option.id is defined ? option.id : null,
+				name: name is defined and name | length > 0 ? name : null,
+				checked: (option.value == value),
+				autofocus: (autofocus is defined and autofocus and loop.first and not craft.request.isMobileBrowser(true)),
+				disabled: option.disabled is defined and option.disabled in [true, false] ? option.containerClass : null,
+				label: (option.label is defined ? option.label : option)
+			} only %}
+		{% endfor %}
+	{% endif %}
+
+	{% if errors %}
+		<span class="b-form__message">
+			{% for error in errors %}
+				{% set errorPrefix = loop.index0 > 0 ? ' ,' : '' %}
+
+				{{ errorPrefix ~ error }}
+			{% endfor %}
+		</span>
+	{% endif %}
+</fieldset>

@@ -1,0 +1,26 @@
+{% set class = (class is defined and class != '') ? ' ' ~ class : '' %}
+{% set id = (id is defined and id != '') ? 'id=' ~ id : '' %}
+{% set autoplay = (autoplay is defined and autoplay in ['true', 'false']) ? autoplay : 'false' %}
+{% set autoplaySpeed = (autoplaySpeed is defined and autoplaySpeed != '') ? autoplaySpeed : 6000 %}
+{% set fade = (fade is defined and fade in ['true', 'false']) ? fade : 'false' %}
+{% set dots = (dots is defined and dots in ['true', 'false']) ? dots : 'false' %}
+{% set arrows = (arrows is defined and arrows in ['true', 'false']) ? arrows : 'true' %}
+{% set infinite = (infinite is defined and infinite in ['true', 'false']) ? infinite : 'false' %}
+{% set pauseOnHover = (pauseOnHover is defined and pauseOnHover in ['true', 'false']) ? pauseOnHover : 'false' %}
+{% set speed = (speed is defined and speed != '') ? speed : 300 %}
+{% set asNavFor = (asNavFor is defined and asNavFor != '') ? asNavFor : '' %}
+{% set slidesToShow = (slidesToShow is defined and slidesToShow != '') ? slidesToShow : 1 %}
+{% set slidesToScroll = (slidesToScroll is defined and slidesToScroll != '') ? slidesToScroll : 1 %}
+{% set focusOnSelect = (focusOnSelect is defined and focusOnSelect in ['true', 'false']) ? focusOnSelect : 'false' %}
+{% set responsive = (responsive is defined and responsive is iterable) ? responsive|json_encode() : '[]' %}
+{% set items = (items is defined and items is iterable) ? items : [] %}
+
+<div class="c-sliders js-slider{{ class }}" data-autoplay="{{ autoplay }}" data-autoplay-speed="{{ autoplaySpeed }}" data-fade="{{ fade }}" data-dots="{{ dots }}" data-arrows="{{ arrows }}" data-infinite="{{ infinite }}" data-pause-on-hover="{{ pauseOnHover }}" data-speed="{{ speed }}" data-as-nav-for="{{ asNavFor }}" data-slides-to-show="{{ slidesToShow }}" data-slides-to-scroll="{{ slidesToScroll }}" data-focus-on-select="{{ focusOnSelect }}" data-responsive="{{ responsive }}"{{ id }}>
+  {% block slides %}
+    {% for item in items %}
+      {% include "_components/slider/imageSlide" with {
+        image: item
+      } only %}
+    {% endfor %}
+  {% endblock %}
+</div>

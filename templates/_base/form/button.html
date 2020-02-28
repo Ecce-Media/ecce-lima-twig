@@ -1,0 +1,13 @@
+{% import "_macros/ui" as ui %}
+
+<button type="{{ (buttonType is defined and buttonType != '') ? buttonType : 'submit' }}" class="b-button {{ (buttonClass is defined and buttonClass != '') ? buttonClass : 'b-button--one' }}{{ (buttonIcon is defined and buttonIcon != '') ? ' b-button--icon' : '' }}">
+	{% if buttonIcon is defined and buttonIcon != '' %}
+		{{ ui.icon(buttonIcon, '', '', '', '', '') }}
+	{% endif %}
+	
+	{% if buttonText is defined and buttonText != '' and buttonText != '__EMPTY__' %}
+		{{ buttonText }}
+	{% elseif buttonText is defined and buttonText == '' and buttonText != '__EMPTY__' %}
+		{{ 'Submit' }}
+	{% endif %}
+</button>

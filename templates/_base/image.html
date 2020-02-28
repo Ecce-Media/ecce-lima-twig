@@ -1,0 +1,48 @@
+{% if (width is defined and width != '') and (height is defined and height != '') %}
+	{% set percentPaddingTop = (height / width) * 100 %}
+{% else %}
+	{% set percentPaddingTop = 100 %}
+{% endif %}
+
+{% if lazyLoad is defined and lazyLoad == true %}
+	<figure class="b-lazyload-container" style="padding-top:{{ percentPaddingTop }}%;">
+{% endif %}
+	<img
+		{% if (srcset is defined and srcset != '') and (lazyLoad is defined and lazyLoad) %}
+			data-srcset="{{ srcset }}"
+		{% elseif srcset is defined and srcset != '' %}
+			srcset="{{ srcset }}"
+		{% endif %}
+		{% if sizes is defined and sizes != '' %} sizes="{{ sizes }}"{% endif %}
+		{% if (src is defined and src != '') and (lazyLoad is defined and lazyLoad) %}
+			data-src="{{ src }}"
+		{% elseif src is defined and src != '' %}
+			src="{{ src }}"
+		{% endif %}
+		{% if alt is defined and alt != '' %} alt="{{ alt }}"{% endif %}
+		{% if width is defined and width != '' %} width="{{ width }}"{% endif %}
+		{% if height is defined and height != '' %} height="{{ height }}"{% endif %}
+		class="b-image{% if lazyLoad is defined and lazyLoad == true %} b-lazyload js-lazyload{% endif %} {{ class ?? '' }} js-object-fit" draggable="false" />
+{% if lazyLoad is defined and lazyLoad == true %}
+		{% if lazyLoad is defined and lazyLoad == true and figcaption is defined and figcaption == true and alt is defined and alt != '' %}
+			<figcaption class="b-lazyload__description">{{ alt }}</figcaption>
+		{% endif %}
+	</figure>
+{% endif %}
+
+{% if lazyLoad is defined and lazyLoad == true %}
+	<noscript>
+		<img
+			{% if (srcset is defined and srcset != '') %}
+				srcset="{{ srcset }}"
+			{% endif %}
+			{% if sizes is defined and sizes != '' %} sizes="{{ sizes }}"{% endif %}
+			{% if (src is defined and src != '') %}
+				src="{{ src }}"
+			{% endif %}
+			{% if alt is defined and alt != '' %} alt="{{ alt }}"{% endif %}
+			{% if width is defined and width != '' %} width="{{ width }}"{% endif %}
+			{% if height is defined and height != '' %} height="{{ height }}"{% endif %}
+			class="b-image {{ class ?? '' }}" draggable="false" />
+	</noscript>
+{% endif %}

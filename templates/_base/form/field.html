@@ -1,0 +1,30 @@
+{%- set labelId = (labelId is defined ? labelId : (id is defined ? id~'-label' : null)) %}
+{%- set fieldId = (fieldId is defined ? fieldId : (id is defined ? id~'-field' : null)) %}
+{%- set errors = (errors is defined ? errors : null) -%}
+{%- set fieldClass = (fieldClass is defined ? fieldClass : null) -%}
+
+{% if errors != null %}
+	{%- set fieldClass = fieldClass ~ 'has-error' %}
+{% endif %}
+
+<div class="b-form__group {{ fieldClass }}"{% if fieldId %} id="{{ fieldId }}"{% endif %} {% if fieldContainerAttributes is defined %}{% for key,val in fieldContainerAttributes %}{{ key }}="{{ val }}"{% endfor %}{% endif %}>
+
+	{% if label is defined %}
+		<label class="b-form__label {{ (labelClass is defined and labelClass != '') ? labelClass : '' }}" {% if labelId %} id="{{ labelId }}"{% endif %} {% if id is defined and id %} for="{{ id }}"{% endif %}>
+			{{ label }}
+			{% if required is defined %} *{% endif %}
+		</label>
+	{% endif %}
+
+	{{ input|raw }}
+
+	{% if errors %}
+		<span class="b-form__message">
+			{% for error in errors %}
+				{% set errorPrefix = loop.index0 > 0 ? ' ,' : '' %}
+
+				{{ errorPrefix ~ error }}
+			{% endfor %}
+		</span>
+	{% endif %}
+</div>

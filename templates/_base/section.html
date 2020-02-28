@@ -1,0 +1,8 @@
+{% set tagVar = (tagVar is defined and tagVar | length) ? tagVar : 'section' %}
+{% set class = (class is defined and class != '') ? ' ' ~ class : '' %}
+
+{% if block('sectionContent') is defined and block('sectionContent') is not empty %}
+  <{{ tagVar }} class="b-section{{ class }}"{% if id is defined and id != '' %} id="{{ id }}"{% endif %}>
+    {{ block('sectionContent') }}
+  </{{ tagVar }}>
+{% endif %}

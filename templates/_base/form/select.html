@@ -1,0 +1,39 @@
+{% set options = (options is defined ? options : []) %}
+{% set value = (value is defined ? value : null) %}
+{% set hasOptgroups = false %}
+
+<div class="b-form__select">
+	<div class="b-form__select-arrow">
+		{% block selectArrow %}{% endblock %}
+	</div>
+
+	<select
+		{% if id is defined %} id="{{ id }}"{% endif %}
+		{% if name is defined %} name="{{ name }}"{% endif %}
+		{% if placeholder is defined %} placeholder="{{ placeholder }}"{% endif %}
+		{% if autofocus is defined and autofocus and not craft.request.isMobileBrowser(true) %} autofocus{% endif %}
+		{% if disabled is defined and disabled %} disabled{% endif %}
+		{% if required is defined and required %} required{% endif %}
+		{% if multiple is defined and multiple %} multiple{% endif %}
+		class="b-form__select-select{% if class is defined %}{{ ' ' ~ class }}{% endif %}">
+
+		{% for key, option in options %}
+			{% if option.optgroup is defined %}
+				{% if hasOptgroups %}
+					</optgroup>
+				{% else %}
+					{% set hasOptgroups = true %}
+				{% endif %}
+				<optgroup label="{{ option.optgroup }}">
+			{% else %}
+				{% set optionLabel = (option.label is defined ? option.label : option) %}
+				{% set optionValue = (option.value is defined ? option.value : key) %}
+				{% set optionDisabled = (option.disabled is defined ? option.disabled : false) %}
+				<option value="{{ optionValue }}"{% if (optionValue == value) or (selected is defined and selected) %} selected{% endif %}{% if optionDisabled %} disabled{% endif %}>{{ optionLabel }}</option>
+			{% endif %}
+		{% endfor %}
+		{% if hasOptgroups %}
+			</optgroup>
+		{% endif %}
+	</select>
+</div>

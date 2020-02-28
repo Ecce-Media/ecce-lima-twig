@@ -1,0 +1,24 @@
+{% set type = (type is defined and type in ['radio', 'checkbox']) ? type : 'checkbox' %}
+{% set value = (value is defined ? value : '1') %}
+
+<div 
+	{% if containerId is defined %} id="{{ containerId }}"{% endif %}
+	class="b-form__option{% if containerClass is defined %} {{ containerClass }}{% endif %}" 
+>
+	<input
+		type="{{ type }}"
+		value="{{ value }}"
+	  class="b-form__option-input{% if class is defined %} {{ class }}{% endif %}"
+	  {% if id is defined %} id="{{ id }}"{% endif %}
+	  {% if name is defined %} name="{{ name }}"{% endif %}
+	  {% if checked is defined and checked %} checked{% endif %}
+	  {% if autofocus is defined and autofocus and not craft.request.isMobileBrowser(true) %} autofocus{% endif %}
+	  {% if disabled is defined and disabled %} disabled{% endif %}
+	/>
+
+	<label class="b-form__option-label"{% if id is defined %} for="{{ id }}"{% endif %}>
+		<span class="'b-form__option-faux b-form__option-faux--{{ type }}" />
+
+	  {% if label is defined %}{{ label }}{% endif %}
+	</label>
+</div>

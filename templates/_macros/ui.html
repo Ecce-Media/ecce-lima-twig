@@ -1,0 +1,29 @@
+{% macro icon(name, size, style, color, accessibilityText, customClass) %}
+  {% if name != '' %}
+    {% set className = 'b-icon' %}
+
+    {% if size != '' %}
+      {% set className = className ~ ' b-icon--size-' ~ size %}
+    {% endif %}
+
+    {% if style != '' %}
+      {% set className = className ~ ' b-icon--style-' ~ style %}
+    {% endif %}
+
+    {% if color != '' %}
+      {% set className = className ~ ' b-icon--color-' ~ color %}
+    {% endif %}
+
+    {% if customClass != '' %}
+      {% set className = className ~ ' ' ~ customClass %}
+    {% endif %}
+
+    <span class="{{ className }}">
+      {% if accessibilityText != '' %}
+        <span class="b-hide">{{ accessibilityText }}</span>
+      {% endif %}
+
+      {% include '_svg/icon-' ~ name ~ '.svg' %}
+    </span>
+  {% endif %}
+{% endmacro %}

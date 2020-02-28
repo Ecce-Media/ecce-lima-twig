@@ -1,0 +1,16 @@
+<a
+	{% if href is defined and href != '' %} href="{{ href }}"{% endif %}
+	{% if id is defined and id != '' %} id="{{ id }}"{% endif %}
+	{% if class is defined and class != '' %} class="{{ class }}"{% endif %}
+	{% if target is defined and target != '' %} target="{{ target }}"{% endif %}
+	{% if dataTarget is defined and dataTarget != '' %} data-target="{{ dataTarget }}"{% endif %}
+	{% if rel is defined and rel != '' %} rel="{{ rel }}"{% endif %}
+	{% if title is defined and title != '' %} title="{{ title }}"{% endif %}
+	{% if role is defined and role != '' %} role="{{ role }}"{% endif %}
+	{% if aria is defined and aria != '' %} aria-label="{{ aria }}"{% endif %}>
+	{% if block('linkContent') is defined and block('linkContent') is not empty %}
+		{{ block('linkContent') }}
+	{% else %}
+			{{ text }}
+	{% endif %}
+</a>

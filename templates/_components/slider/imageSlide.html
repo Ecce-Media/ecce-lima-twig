@@ -1,0 +1,15 @@
+{% set image = (image is defined and image is iterable) ? image : [] %}
+
+{% if image | length > 0 %}
+  <div class="c-sliders__slide slick-slide">
+    {% include '_base/image' with {
+      srcset: image.srcset is defined and image.srcset | length ? image.srcset : null,
+      src: image.src is defined and image.src | length ? image.src : null,
+      alt: image.alt is defined and image.alt | length ? image.alt : null,
+      lazyLoad: true,
+      height: image.height is defined and image.height | length ? image.height : null,
+      width: image.width is defined and image.width | length ? image.width : null,
+      containerClass: 'u-no-margin-xs'
+    } %}
+  </div>
+{% endif %}
