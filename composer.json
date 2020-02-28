@@ -1,0 +1,23 @@
+{
+  "name": "ecce-media/ecce-lima-twig",
+  "type": "library",
+  "description": "Twig starter pack for Lima framework by Ecce",
+  "keywords": [
+    "ecce.",
+    "lima",
+    "frontend framework",
+    "twig",
+    "craft",
+    "craft cms"
+  ],
+  "homepage": "https://ecce.uk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Liam Mills",
+      "email": "liam@ecce.uk",
+      "homepage": "http://liammills.co.uk/",
+      "role": "Frontend Developer"
+    }
+  ]
+}
