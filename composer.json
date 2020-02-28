@@ -22,6 +22,6 @@
     }
   ],
   "require": {
-    "ecce-media/ecce-lima-twig-installer": "dev-master"
+    "ecce-media/ecce-lima-twig-installer": "^1.0"
   }
 }
