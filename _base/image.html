@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if lazyLoad is defined and lazyLoad == true %}
-	<figure class="b-lazyload-container" style="padding-top:{{ percentPaddingTop }}%;">
+	<figure class="b-lazyload" style="padding-top:{{ percentPaddingTop }}%;">
 {% endif %}
 	<img
 		{% if (srcset is defined and srcset != '') and (lazyLoad is defined and lazyLoad) %}
@@ -22,7 +22,7 @@
 		{% if alt is defined and alt != '' %} alt="{{ alt }}"{% endif %}
 		{% if width is defined and width != '' %} width="{{ width }}"{% endif %}
 		{% if height is defined and height != '' %} height="{{ height }}"{% endif %}
-		class="b-image{% if lazyLoad is defined and lazyLoad == true %} b-lazyload js-lazyload{% endif %} {{ class ?? '' }} js-object-fit" draggable="false" />
+		class="b-image{% if lazyLoad is defined and lazyLoad == true %} b-lazyload__image js-lazyload{% endif %} {{ class ?? '' }} js-object-fit" draggable="false" />
 {% if lazyLoad is defined and lazyLoad == true %}
 		{% if lazyLoad is defined and lazyLoad == true and figcaption is defined and figcaption == true and alt is defined and alt != '' %}
 			<figcaption class="b-lazyload__description">{{ alt }}</figcaption>
