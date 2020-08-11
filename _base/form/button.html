@@ -1,4 +1,4 @@
-{% import "_macros/ui" as ui %}
+{% import "templates/vendor/ecce-media/ecce-lima-twig/_macros/ui" as ui %}
 
 <button type="{{ (buttonType is defined and buttonType != '') ? buttonType : 'submit' }}" class="b-button {{ (buttonClass is defined and buttonClass != '') ? buttonClass : 'b-button--one' }}{{ (buttonIcon is defined and buttonIcon != '') ? ' b-button--icon' : '' }}">
 	{% if buttonIcon is defined and buttonIcon != '' %}
