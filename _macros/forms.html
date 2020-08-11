@@ -1,6 +1,6 @@
 {# Main field macro, this is used to wrap inputs with the container markup #}
 {% macro field(config, input) %}
-  {% include "_base/form/field" with config|merge({ input: input }) only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/field" with config|merge({ input: input }) only %}
 {% endmacro %}
 
 {# ---------------------------- #}
@@ -8,32 +8,32 @@
 {# ---------------------------- #}
 {# plain text #}
 {% macro text(config) %}
-  {% include "_base/form/text" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/text" with config only %}
 {% endmacro %}
 
 {# textarea #}
 {% macro textarea(config) %}
-  {% include "_base/form/textarea" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/textarea" with config only %}
 {% endmacro %}
 
 {# select - dropdown #}
 {% macro select(config) %}
-    {% include "_base/form/select" with config only %}
+    {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/select" with config only %}
 {% endmacro %}
 
 {# radio or checkbox #}
 {% macro radioCheckbox(config) %}
-  {% include "_base/form/radioCheckbox" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/radioCheckbox" with config only %}
 {% endmacro %}
 
 {# range #}
 {% macro rangeInput(config) %}
-  {% include "_base/form/range" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/range" with config only %}
 {% endmacro %}
 
 {# button #}
 {% macro button(config) %}
-  {% include "_base/form/button" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/button" with config only %}
 {% endmacro %}
 
 {# ---------------------------- #}
@@ -57,7 +57,7 @@
 
 {# radio or checkbox group #}
 {% macro radioCheckboxGroup(config) %}
-  {% include "_base/form/radioCheckboxGroup" with config only %}
+  {% include "templates/vendor/ecce-media/ecce-lima-twig/_base/form/radioCheckboxGroup" with config only %}
 {% endmacro %}
 
 {# range #}
